@@ -1,0 +1,58 @@
+import type { Video } from "../components/VideoCard";
+
+export const videos: Video[] = [
+  {
+    id: 1,
+    title: "The Prodigal Son",
+    slug: "the-prodigal-son",
+    poster_url: "/posters/prodigal.jpg",
+    description: "A moving Christian short film about grace, repentance, and restoration.",
+    duration: "24 min",
+    category: "Bible Story",
+  },
+  {
+    id: 2,
+    title: "David and Goliath",
+    slug: "david-and-goliath",
+    poster_url: "/posters/david.jpg",
+    description: "A powerful retelling of courage, faith, and victory through God.",
+    duration: "28 min",
+    category: "Bible Story",
+  },
+  {
+    id: 3,
+    title: "Walking by Faith",
+    slug: "walking-by-faith",
+    poster_url: "/posters/faith.jpg",
+    description: "An original Christian film about trusting God through uncertainty.",
+    duration: "31 min",
+    category: "Short Film",
+  },
+  {
+    id: 4,
+    title: "Hope After the Storm",
+    slug: "hope-after-the-storm",
+    poster_url: "/posters/hope.jpg",
+    description: "A testimony of healing, prayer, and renewed hope after hardship.",
+    duration: "19 min",
+    category: "Testimony",
+  },
+  {
+    id: 5,
+    title: "Armor of God for Kids",
+    slug: "armor-of-god-for-kids",
+    poster_url: "/posters/armor.jpg",
+    description: "A family-friendly animation teaching children spiritual truth.",
+    duration: "14 min",
+    category: "Kids",
+  },
+  {
+    id: 6,
+    title: "Psalm 23 Meditation",
+    slug: "psalm-23-meditation",
+    poster_url: "/posters/psalm23.jpg",
+    description: "A peaceful worship and meditation video centered on Psalm 23.",
+    duration: "12 min",
+    category: "Worship",
+  },
+];
