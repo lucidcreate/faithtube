@@ -5,7 +5,7 @@ export default function Navbar() {
     <header className="navbar">
       <div className="navbar-inner">
         <NavLink to="/" className="brand brand-logo">
-          <img src="/logo.png" alt="FaithTube logo" className="brand-logo-img" />
+          <img src="public/logo.png" alt="FaithTube logo displaying the text FaithTube, symbolizing a community for faith-based videos with an inspirational tone" className="brand-logo-img" />
         </NavLink>
 
         <nav className="nav-links">
