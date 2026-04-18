@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <img src="public/logo.png" alt="FaithTube logo" style={{ height: "32px", width: "auto" }} />
+          <img src="/logo.png" alt="FaithTube logo" style={{ height: "32px", width: "auto" }} />
           <div>© {new Date().getFullYear()} FaithTube. All rights reserved.</div>
         </div>
 
