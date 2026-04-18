@@ -5,11 +5,18 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <img src="public/logo.png" alt="FaithTube logo" style={{ height: "32px", width: "auto" }} />
-          <div>© {new Date().getFullYear()} FaithTube. All rights reserved.</div>
+          
+          {/* Logo */}
+          <Link to="/" className="logo" />
+
+          <div>
+            © {new Date().getFullYear()} FaithTube. All rights reserved.
+          </div>
         </div>
 
-        <div>Original Christian films, Bible stories, and faith-filled videos.</div>
+        <div>
+          Original Christian films, Bible stories, and faith-filled videos.
+        </div>
 
         <div className="footer-links">
           <Link to="/about" className="footer-link">

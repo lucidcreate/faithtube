@@ -19,7 +19,17 @@
   letter-spacing: 0.2px;
 }
 
+.logo {
+  width: 160px;
+  height: 48px;
 
+  background-image: url("/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+
+  display: inline-block;
+}
 
 :root {
   --bg: #020617;
@@ -1039,3 +1049,4 @@ button {
   gap: 12px;
   flex-wrap: wrap;
 }
+
