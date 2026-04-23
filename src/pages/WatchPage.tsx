@@ -349,7 +349,20 @@ export default function WatchPage() {
           <div style={{ marginTop: 20 }}>
             <AdBanner adSlot="YOUR_AD_SLOT_1" />
           </div>
+<div className="info-card">
+  <h2 className="section-title">About this video</h2>
 
+  <p className="soft">
+    This faith-based video explores themes of hope, trust in God, and the
+    power of prayer. Through powerful storytelling, it reminds viewers that
+    God is always present, even in difficult moments.
+  </p>
+
+  <p className="soft">
+    Watching Christian content like this can strengthen your faith and help
+    you reflect on God’s promises in your daily life.
+  </p>
+</div>
           <div className="action-bar">
             <button
               className="icon-btn"

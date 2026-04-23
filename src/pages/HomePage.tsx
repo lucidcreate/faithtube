@@ -162,6 +162,44 @@ export default function HomePage() {
           </>
         )}
       </section>
+      <section className="section">
+  <div className="info-card">
+    <h2 className="section-title">About FaithTube</h2>
+
+    <p className="soft">
+      FaithTube is a Christian streaming platform dedicated to sharing
+      faith-filled movies, Bible stories, testimonies, and inspiring content
+      for believers around the world. Our mission is to provide uplifting,
+      family-friendly entertainment that strengthens faith and encourages
+      spiritual growth.
+    </p>
+
+    <p className="soft">
+      From powerful Bible stories to modern Christian short films, FaithTube
+      curates meaningful video content designed to inspire, teach, and bring
+      hope to viewers of all ages.
+    </p>
+  </div>
+</section>
+<section className="section">
+  <div className="info-card">
+    <h2 className="section-title">Why Christian Movies Matter</h2>
+
+    <p className="soft">
+      Christian movies and faith-based films play a powerful role in sharing
+      the message of hope, redemption, and God’s love. Through storytelling,
+      these films bring Biblical truths to life and help viewers connect with
+      Scripture in a meaningful way.
+    </p>
+
+    <p className="soft">
+      Whether you are watching a Bible story, a testimony, or a short film,
+      each piece of content on FaithTube is designed to encourage your walk
+      with God and inspire your daily life.
+    </p>
+  </div>
+</section>
+
     </>
   );
 }

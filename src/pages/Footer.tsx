@@ -32,6 +32,10 @@ export default function Footer() {
             Contact
           </Link>
         </div>
+        <div>support@faithtube.co.uk</div>
+        <div>
+          We use Google AdSense and third-party vendors to serve ads using cookies.
+        </div>
       </div>
     </footer>
   );

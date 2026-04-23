@@ -17,6 +17,9 @@ export default function Navbar() {
           <NavLink to="/about" className="nav-link">
             About
           </NavLink>
+          <NavLink to="/blog" className="nav-link">
+            Blog
+          </NavLink>
         </nav>
 
         <div className="nav-actions">

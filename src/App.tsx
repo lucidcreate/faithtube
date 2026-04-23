@@ -12,6 +12,7 @@ import AdminPage from "./pages/AdminPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 import ContactPage from "./pages/ContactPage";
+import BlogPage from "./pages/Blog";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
           <Route path="/browse" element={<BrowsePage />} />
           <Route path="/watch/:slug" element={<WatchPage />} />
           <Route path="/login" element={<LoginPage />} />
