@@ -17,15 +17,13 @@ export default function SignupPage() {
     setErrorText("");
     setMessage("");
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          name,
-        },
-      },
-    });
+   const { data, error } = await supabase.auth.signUp({
+  email,
+  password,
+  options: {
+    emailRedirectTo: "https://www.faithtube.co.uk/#/profile",
+  },
+});
 
     if (error) {
       setErrorText(error.message);
