@@ -22,30 +22,32 @@ export default function Navbar() {
           <NavLink to="/about" className="nav-link">About</NavLink>
         </nav>
 
-        <div className="nav-actions">
-          {loading ? null : user ? (
-            <>
-              <NavLink to="/profile" className="btn btn-secondary">
-                Profile
-              </NavLink>
+       <div className="nav-actions">
+  {loading ? null : user ? (
+    <>
+      <NavLink to="/profile" className="btn btn-secondary">
+        Profile
+      </NavLink>
 
-              <button className="btn btn-primary" onClick={handleLogout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <NavLink to="/login" className="btn btn-secondary">
-                Login
-              </NavLink>
+      <button className="btn btn-primary" onClick={handleLogout}>
+        Logout
+      </button>
+    </>
+  ) : (
+    <>
+      <NavLink to="/login" className="btn btn-secondary">
+        Login
+      </NavLink>
 
-              <NavLink to="/signup" className="btn btn-primary">
-                Sign Up
-              </NavLink>
-            </>
-          )}
-        </div>
+      <NavLink to="/signup" className="btn btn-primary">
+        Sign Up
+      </NavLink>
+    </>
+  )}
+</div>
       </div>
     </header>
   );
+  console.log("NAV USER:", user);
+console.log("NAV LOADING:", loading);
 }
