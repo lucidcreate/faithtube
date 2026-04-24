@@ -16,25 +16,14 @@ export default function Navbar() {
         <Link to="/" className="logo" />
 
         <nav className="nav-links">
-          <NavLink to="/" className="nav-link">
-            Home
-          </NavLink>
-
-          <NavLink to="/browse" className="nav-link">
-            Browse
-          </NavLink>
-
-          <NavLink to="/blog" className="nav-link">
-            Blog
-          </NavLink>
-
-          <NavLink to="/about" className="nav-link">
-            About
-          </NavLink>
+          <NavLink to="/" className="nav-link">Home</NavLink>
+          <NavLink to="/browse" className="nav-link">Browse</NavLink>
+          <NavLink to="/blog" className="nav-link">Blog</NavLink>
+          <NavLink to="/about" className="nav-link">About</NavLink>
         </nav>
 
         <div className="nav-actions">
-          {!loading && user ? (
+          {loading ? null : user ? (
             <>
               <NavLink to="/profile" className="btn btn-secondary">
                 Profile
