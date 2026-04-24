@@ -42,6 +42,19 @@ export default function WatchPage() {
   const [savingFavorite, setSavingFavorite] = useState(false);
   const [sharing, setSharing] = useState(false);
   const [postingComment, setPostingComment] = useState(false);
+useEffect(() => {
+  if (!video) return;
+
+  document.title = `${video.title} | FaithTube`;
+
+  const metaDesc = document.querySelector("meta[name='description']");
+  if (metaDesc) {
+    metaDesc.setAttribute(
+      "content",
+      video.description || "Watch this Christian video on FaithTube."
+    );
+  }
+}, [video]);
 
   useEffect(() => {
     async function loadEngagement() {
