@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import VideoCard from "../components/VideoCard";
 
@@ -8,55 +8,29 @@ type Profile = {
   name: string | null;
   bio: string | null;
   avatar_url: string | null;
-  show_likes: boolean;
-};
-
-type VideoItem = {
-  id: number;
-  title: string;
-  slug: string;
-  poster_url: string;
-  description: string;
-  duration: string;
-  category: string;
+  show_likes: boolean | null;
 };
 
 export default function PublicProfilePage() {
   const { id } = useParams();
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [likedVideos, setLikedVideos] = useState<VideoItem[]>([]);
+  const [likedVideos, setLikedVideos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState("");
 
   useEffect(() => {
     async function loadPublicProfile() {
       if (!id) return;
 
-      setLoading(true);
-      setMessage("");
-
-      const { data: profileData, error: profileError } = await supabase
+      const { data: profileData } = await supabase
         .from("profiles")
         .select("id, name, bio, avatar_url, show_likes")
         .eq("id", id)
         .maybeSingle();
 
-      if (profileError) {
-        setMessage(profileError.message);
-        setLoading(false);
-        return;
-      }
-
-      if (!profileData) {
-        setMessage("Profile not found.");
-        setLoading(false);
-        return;
-      }
-
       setProfile(profileData);
 
-      if (profileData.show_likes) {
-        const { data: likesData, error: likesError } = await supabase
+      if (profileData?.show_likes) {
+        const { data } = await supabase
           .from("likes")
           .select(`
             videos (
@@ -66,19 +40,13 @@ export default function PublicProfilePage() {
               poster_url,
               description,
               duration,
-              category
+              category,
+              tags
             )
           `)
           .eq("user_id", id);
 
-        if (likesError) {
-          setMessage(likesError.message);
-        } else {
-          const liked = (likesData || [])
-            .map((item: any) => item.videos)
-            .filter(Boolean);
-          setLikedVideos(liked);
-        }
+        setLikedVideos((data || []).map((item: any) => item.videos).filter(Boolean));
       }
 
       setLoading(false);
@@ -87,53 +55,15 @@ export default function PublicProfilePage() {
     loadPublicProfile();
   }, [id]);
 
-  async function handleShareProfile() {
-    if (!profile) return;
-
-    const profileUrl = window.location.href;
-
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: profile.name || "FaithTube Profile",
-          text: "Check out this FaithTube profile",
-          url: profileUrl,
-        });
-        setMessage("Profile shared.");
-        return;
-      }
-
-      await navigator.clipboard.writeText(profileUrl);
-      setMessage("Profile link copied.");
-    } catch (err: any) {
-      if (err?.name === "AbortError") {
-        setMessage("Share cancelled.");
-      } else {
-        setMessage("Could not share profile.");
-      }
-    }
-  }
-
   if (loading) {
     return (
-      <section className="profile-wrap">
-        <div className="profile-card">
-          <p className="soft">Loading profile...</p>
-        </div>
+      <section className="section">
+        <p className="soft">Loading profile...</p>
       </section>
     );
   }
 
-  if (!profile) {
-    return (
-      <section className="profile-wrap">
-        <div className="profile-card">
-          <h1 className="section-title">Profile not found</h1>
-          {message && <p className="soft mt-2">{message}</p>}
-        </div>
-      </section>
-    );
-  }
+  if (!profile) return <Navigate to="/" replace />;
 
   return (
     <section className="profile-wrap">
@@ -152,39 +82,29 @@ export default function PublicProfilePage() {
           </div>
 
           <div>
-            <h1 className="profile-name">{profile.name || "FaithViewer"}</h1>
-            <div className="profile-meta">Public FaithTube Profile</div>
+            <h1 className="profile-name">{profile.name || "FaithTube User"}</h1>
+            <div className="profile-meta">FaithTube Profile</div>
           </div>
         </div>
 
-        <p className="profile-bio">
-          {profile.bio || "No bio added yet."}
-        </p>
+        <p className="profile-bio">{profile.bio || "No bio added yet."}</p>
+      </div>
 
-        <div className="form-actions mt-3">
-          <button className="btn btn-primary" onClick={handleShareProfile}>
-            Share Profile
-          </button>
+      {profile.show_likes && (
+        <div className="section">
+          <h2 className="section-title">Liked Videos</h2>
+
+          {likedVideos.length === 0 ? (
+            <p className="soft">No public liked videos yet.</p>
+          ) : (
+            <div className="video-grid">
+              {likedVideos.map((video) => (
+                <VideoCard key={video.id} video={video} />
+              ))}
+            </div>
+          )}
         </div>
-
-        {message && <p className="soft mt-2">{message}</p>}
-      </div>
-
-      <div className="section">
-        <h2 className="section-title">Liked Videos</h2>
-
-        {!profile.show_likes ? (
-          <p className="soft">This user has hidden their liked videos.</p>
-        ) : likedVideos.length === 0 ? (
-          <p className="soft">No liked videos yet.</p>
-        ) : (
-          <div className="video-grid">
-            {likedVideos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
-          </div>
-        )}
-      </div>
+      )}
     </section>
   );
 }

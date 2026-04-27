@@ -19,7 +19,8 @@ type VideoItem = {
   poster_url: string | null;
   description: string | null;
   duration: string | null;
-  category?: string;
+  category?: string | null;
+  tags?: string[] | null;
 };
 
 export default function ProfilePage() {
@@ -67,7 +68,9 @@ export default function ProfilePage() {
                 slug,
                 poster_url,
                 description,
-                duration
+                duration,
+                category,
+                tags
               )
             `)
             .eq("user_id", user.id),
@@ -81,7 +84,9 @@ export default function ProfilePage() {
                 slug,
                 poster_url,
                 description,
-                duration
+                duration,
+                category,
+                tags
               )
             `)
             .eq("user_id", user.id),
@@ -149,8 +154,12 @@ export default function ProfilePage() {
       }
     }
 
-    loadProfilePage();
-  }, [user]);
+    if (user) {
+      loadProfilePage();
+    } else if (!loading) {
+      setLoadingProfile(false);
+    }
+  }, [user, loading]);
 
   function handleAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -238,27 +247,13 @@ export default function ProfilePage() {
   async function handleShareProfile() {
     if (!user) return;
 
-    const profileUrl = `${window.location.origin}/profile/${user.id}`;
+    const profileUrl = `${window.location.origin}/#/profile/${user.id}`;
 
     try {
-      if (navigator.share) {
-        await navigator.share({
-          title: profile?.name || "FaithTube Profile",
-          text: "Check out this FaithTube profile",
-          url: profileUrl,
-        });
-        setMessage("Profile shared.");
-        return;
-      }
-
       await navigator.clipboard.writeText(profileUrl);
       setMessage("Profile link copied.");
-    } catch (err: any) {
-      if (err?.name === "AbortError") {
-        setMessage("Share cancelled.");
-      } else {
-        setMessage("Could not share profile.");
-      }
+    } catch {
+      setMessage(`Copy this link: ${profileUrl}`);
     }
   }
 
@@ -320,7 +315,7 @@ export default function ProfilePage() {
               </button>
 
               <button className="btn btn-primary" onClick={handleShareProfile}>
-                Share Profile
+                Copy Profile Link
               </button>
             </div>
           </>

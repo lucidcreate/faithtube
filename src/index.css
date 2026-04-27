@@ -1209,3 +1209,133 @@ button {
   color: rgba(255, 255, 255, 0.76);
   margin: 0 0 16px;
 }
+
+
+
+.blog-list-hero,
+.blog-article {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.blog-list-hero {
+  padding: 34px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.blog-card-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.blog-preview-card {
+  overflow: hidden;
+  border-radius: 22px;
+  text-decoration: none;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.blog-preview-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.07);
+}
+
+.blog-preview-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-preview-body {
+  padding: 18px;
+}
+
+.blog-preview-body h2 {
+  color: white;
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.blog-preview-body p,
+.blog-paragraph {
+  color: rgba(255,255,255,0.78);
+  line-height: 1.75;
+}
+
+.blog-read-more {
+  display: inline-block;
+  margin-top: 12px;
+  color: #facc15;
+  font-weight: 700;
+}
+
+.blog-article {
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.blog-article-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 22px;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,0.58);
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.blog-title {
+  color: white;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.08;
+  margin: 0 0 16px;
+}
+
+.blog-subtitle {
+  color: rgba(255,255,255,0.78);
+  max-width: 760px;
+}
+
+.blog-badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(250,204,21,0.15);
+  color: #facc15;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.blog-cta {
+  margin-top: 30px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(250,204,21,0.08);
+  border: 1px solid rgba(250,204,21,0.18);
+}
+
+.blog-cta h3 {
+  color: white;
+  margin: 0 0 8px;
+}
+
+.blog-cta p {
+  color: rgba(255,255,255,0.76);
+}

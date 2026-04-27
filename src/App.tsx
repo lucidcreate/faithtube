@@ -12,7 +12,8 @@ import AdminPage from "./pages/AdminPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 import ContactPage from "./pages/ContactPage";
-import BlogPage from "./pages/Blog";
+import BlogPostPage from "./pages/BlogPostPage";
+import PublicProfilePage from "./pages/PublicProfilePage";
 
 export default function App() {
   return (
@@ -20,20 +21,21 @@ export default function App() {
       <Navbar />
 
       <main className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/browse" element={<BrowsePage />} />
-          <Route path="/watch/:slug" element={<WatchPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/browse" element={<BrowsePage />} />
+        <Route path="/watch/:slug" element={<WatchPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:id" element={<PublicProfilePage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
       </main>
 
       <Footer />
